@@ -2,7 +2,7 @@ import Image from "next/image"
 
 export default function Home() {
   return (
-    <main className=" bg-slate-50 flex min-h-screen flex-col items-center justify-between p-24">
+    <main className=" bg-slate-50 dark:bg-slate-800 flex min-h-screen flex-col items-center justify-between p-24">
       <div className="w-full max-w-5xl justify-between font-mono text-sm lg:flex">
         <Left />
         <Divider />
@@ -36,6 +36,7 @@ function Right() {
         priority
         src={'/cat.svg'}
         alt="Follow us on Twitter"
+        className="  fill-red-200 outline-green-500"
       />
       <div className="pt-10 text-lg text-center">
         <p className="text-2xl pb-5">Meow!</p>
@@ -45,4 +46,4 @@ function Right() {
     </div>
   )
 }
-const Divider = () => <div className="divider lg:divider-horizontal" />
+const Divider = () => <div className="divider lg:divider-horizontal dark:divide-slate-100" />
