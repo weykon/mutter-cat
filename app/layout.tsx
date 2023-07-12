@@ -1,4 +1,4 @@
-import TabPage from './@tab/page'
+import TabbarPage from './(tab)/tab'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -12,13 +12,14 @@ export const metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode,
+  tab: React.ReactNode
 }) {
   return (
     <html lang="en" data-theme="lemonade">
       <body className={inter.className}>
-        <div className='w-full h-full'>
-          <TabPage />
+        <div className='w-full h-full flex-col flex'>
+          <TabbarPage />
           {children}
         </div>
       </body>

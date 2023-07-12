@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ImgComp from "./image";
 const width = 600;
 const height = 400;
 const imgs = [
@@ -19,17 +19,17 @@ export default function MutterPage() {
   return (
     <>
       {
-        imgs.map(e => (
-          <ImageFromUrl url={e} key={e} />
-        ))
-      }
+      imgs.map(e => (
+        <ImageFromUrl url={e} key={e} />
+      ))
+    }
     </>
   );
 
   function ImageFromUrl({ url }: { url: string }) {
     return (
-      <div className="card w-auto lg:max-w-[400px] bg-base-100 shadow-xl image-full">
-        <figure><img src={url} alt="Shoes" /></figure>
+      <div className=" card w-auto lg:max-w-[400px] bg-base-100 dark:bg-slate-700 shadow-xl image-full">
+        {/* <ImgComp url={url}/>  */}
         <div className="card-body">
           <h2 className="card-title">Shoes!</h2>
           <p>If a dog chews shoes whose shoes does he choose?</p>
