@@ -19,16 +19,16 @@ export default function MutterPage() {
   return (
     <>
       {
-      imgs.map(e => (
-        <ImageFromUrl url={e} key={e} />
-      ))
-    }
+        imgs.map(e => (
+          <ImageFromUrl url={e} key={e} />
+        ))
+      }
     </>
   );
 
   function ImageFromUrl({ url }: { url: string }) {
     return (
-      <div className=" card w-auto lg:max-w-[400px] bg-base-100 dark:bg-slate-700 shadow-xl image-full">
+      <div className=" card w-auto lg:max-w-[400px] bg-neutral dark:bg-neutral-400 shadow-xl image-full">
         {/* <ImgComp url={url}/>  */}
         <div className="card-body">
           <h2 className="card-title">Shoes!</h2>

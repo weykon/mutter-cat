@@ -6,26 +6,26 @@ import FixedRight from "./FixRight";
 export default function TabbarPage() {
     const path = usePathname();
     return (
-        <div className="flex justify-between items-center bg-secondary-content gap-x-2 dark:bg-slate-900 ">
-            <div className="tabs flex w-full pt-2">
-                <Link href={`/`} className={`  hover:dark:bg-gray-700 tab-lifted ml-5 tab tab-lg
+        <div className="pt-2 flex justify-between items-center bg-secondary-content gap-x-2 dark:bg-slate-900 relative">
+            <div className="tabs flex ">
+                <Link href={`/`} className={`  hover:dark:bg-gray-700 tab-lifted ml-5 tab tab-md sm:tab-lg
                 ${path === '/' ? ' bg-primary text-primary-content' : 'bg-base-100  hover:bg-gray-100'}  `}>
-                    My Cat
+                    <p>My Cat</p>
                 </Link>
                 <Link href={`mutter`}
-                    className={` hover:dark:bg-gray-700  tab tab-lg tab-lifted 
+                    className={` hover:dark:bg-gray-700  tab tab-md sm:tab-lg tab-lifted 
                     ${path === '/mutter' ? ' bg-primary text-primary-content' : 'bg-base-100 hover:bg-gray-100'}  `}>
-                    Mutter
+                    <p>Mutter</p>
                 </Link>
                 <Link href={`realdo`}
-                    className={` hover:dark:bg-gray-700  tab tab-lg tab-lifted 
+                    className={` hover:dark:bg-gray-700  tab tab-md sm:tab-lg tab-lifted 
                     ${path === '/realdo' ? ' bg-primary text-primary-content' : 'bg-base-100 hover:bg-gray-100'}  `}>
-                    Real Do
+                    <p>Real Do</p>
                 </Link>
                 <Link href={`uproar`}
-                    className={` hover:dark:bg-gray-700  tab tab-lg tab-lifted 
+                    className={` hover:dark:bg-gray-700  tab tab-md sm:tab-lg tab-lifted 
                     ${path === '/uproar' ? ' bg-primary text-primary-content' : 'bg-base-100 hover:bg-gray-100'}  `}>
-                    Uproar
+                    <p>Uproar</p>
                 </Link>
             </div>
 
