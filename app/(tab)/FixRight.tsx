@@ -14,7 +14,8 @@ enum DetailIndex {
     AvatarDetail
 }
 export default function FixedRight() {
-    const router = useRouter()
+    const router = useRouter();
+
     const onClick = (name: string) => {
         document.querySelector('html')?.setAttribute('data-theme', name)
     }
@@ -53,7 +54,7 @@ export default function FixedRight() {
                         {
                             tailwind['daisyui']['themes'].map((e: string) => {
                                 return (
-                                    <li key={e} className=" w-32" onClick={() => onClick(e)}>
+                                    <li key={e} className=" transition-all w-32" onClick={() => onClick(e)}>
                                         <Item name={e} />
                                     </li>
                                 )
@@ -68,7 +69,7 @@ export default function FixedRight() {
                     setOpenDetail(true);
                     setOpenDetailIndex(DetailIndex.AvatarDetail);
                 }} className={`${avatar_summary_css} `}>
-                    <img width={40} height={40} src="avatar.png" alt="" />
+                    <img width={40} height={40} src="/avatar.png" alt="" />
                 </summary>
                 {/* avatar content */}
                 {
@@ -79,6 +80,7 @@ export default function FixedRight() {
                                     <li key={e.name} className="mx-2 my-2">
                                         <button className=" btn btn-secondary text-secondary-content"
                                             onClick={() => {
+                                                closeAllDetail();
                                                 router.push(e.name)
                                             }}>
                                             <p>{e.name}</p>

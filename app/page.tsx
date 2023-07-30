@@ -1,18 +1,20 @@
 import Image from "next/image"
-import { useState } from "react"
-import FixedRight from "./(tab)/FixRight"
 
-export default function Home() {
+export default async function Home() {
   return (
     <main className=" bg-base-100  dark:bg-base flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="w-full max-w-5xl justify-between font-mono text-sm lg:flex">
-        <Left />
-        <Divider />
-        <Right />
-      </div>
+        <Auth />
     </main>
   )
 }
+
+const Auth = () => (
+  <div className="w-full max-w-5xl justify-between font-mono text-sm lg:flex">
+    <Left />
+    <Divider />
+    <Right />
+  </div>
+)
 
 function Left() {
   return (

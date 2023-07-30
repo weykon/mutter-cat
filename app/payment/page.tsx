@@ -1,7 +1,7 @@
 
 export default function PaymentPage() {
     return (
-        <div className='flex min-h-screen pt-[30px] px-[40px]'>
+        <div className='flex min-h-screen pt-[30px] pb-[60px] px-[40px]'>
             <div className="min-w-full">
                 <p className="text-[#00153B] text-[20px] leading-[40px] font-semibold">
                     Your Subscription
@@ -14,10 +14,10 @@ export default function PaymentPage() {
                 </div>
 
                 <div className="mt-[30px] inline-flex border border-[#E1E3E5] shadow-[0px 1px 2px #E1E3E5] divide-[#E1E3E5] divide-x rounded-[5px]">
-                    <button className="bg-white hover:bg-[#F6F6F7] hover:text-[#717F87] text-[#0E1823] leading-[16px] text-[13px] font-semibold font-bold py-[15px] px-[25px] rounded-l">
+                    <button className="bg-white hover:bg-[#F6F6F7] hover:text-[#717F87] text-[#0E1823] leading-[16px] text-[13px] font-bold py-[15px] px-[25px] rounded-l">
                         Monthly
                     </button>
-                    <button className="bg-white hover:bg-[#F6F6F7] hover:text-[#717F87] text-[#0E1823] text-[13px] leading-[16px] font-semibold font-bold py-[15px] px-[25px] rounded-r">
+                    <button className="bg-white hover:bg-[#F6F6F7] hover:text-[#717F87] text-[#0E1823] text-[13px] leading-[16px] font-bold py-[15px] px-[25px] rounded-r">
                         Annual
                     </button>
                 </div>
@@ -32,7 +32,6 @@ export default function PaymentPage() {
                                     </p>
                                 </div>
                             </div>
-
                             <div>
                                 <p className="text-[#00153B] text-[19px] leading-[24px] font-bold">
                                     Trial

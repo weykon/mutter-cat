@@ -26,6 +26,10 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+.default-main-page-body { 
+  background: white
+}
+
 p { 
   color: rgb(var(--foregroud-rgb));
 }
