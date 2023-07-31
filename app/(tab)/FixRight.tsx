@@ -1,12 +1,10 @@
 'use client'
 import tailwind from "@/tailwind.config.js"
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 
-const avatarDropdown = [
-    { name: 'payment', },
-    { name: 'settings' }
-]
+
 
 enum DetailIndex {
     None = 0,
@@ -15,7 +13,15 @@ enum DetailIndex {
 }
 export default function FixedRight() {
     const router = useRouter();
+    const supabase = createClientComponentClient();
 
+    const avatarDropdown = [
+        { name: 'payment', route: '/payment' },
+        { name: 'settings', route: '/settings/profile' },
+        {
+            name: 'Sign Out', function: true,
+        }
+    ]
     const onClick = (name: string) => {
         document.querySelector('html')?.setAttribute('data-theme', name)
     }
@@ -79,9 +85,13 @@ export default function FixedRight() {
                                 return (
                                     <li key={e.name} className="mx-2 my-2">
                                         <button className=" btn btn-secondary text-secondary-content"
-                                            onClick={() => {
+                                            onClick={async () => {
                                                 closeAllDetail();
-                                                router.push(e.name)
+                                                e.route && router.push(e.route)
+                                                if (e.function) {
+                                                    await supabase.auth.signOut();
+                                                    router.replace('/')
+                                                }
                                             }}>
                                             <p>{e.name}</p>
                                         </button>

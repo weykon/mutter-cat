@@ -42,7 +42,7 @@ function Right() {
         alt="Follow us on Twitter"
         className="stroke-primary fill-slate-400"
       />
-      <div className="pt-10 text-lg text-center">
+      <div className="pt-10 text-lg text-center text-base-content">
         <p className="text-2xl pb-5">Meow!</p>
         <p>I'm Weykon's Mutter Cat</p>
         <p>I know all about weykon</p>

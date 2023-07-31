@@ -3,7 +3,7 @@ export default function PaymentPage() {
     return (
         <div className='flex min-h-screen pt-[30px] pb-[60px] px-[40px]'>
             <div className="min-w-full">
-                <p className="text-[#00153B] text-[20px] leading-[40px] font-semibold">
+                <p className="text-[#00153B] dark:text-base-content text-[20px] leading-[40px] font-semibold">
                     Your Subscription
                 </p>
 
@@ -22,7 +22,7 @@ export default function PaymentPage() {
                     </button>
                 </div>
 
-                <div className="mt-[20px] grid grid-cols-3 gap-[20px]">
+                <div className="mt-[20px] grid gap-[20px] grid-rows-3 sm:grid-cols-3">
                     <div key="1" className="w-full bg-[#fff] rounded-[10px] shadow-[0px 1px 2px #E1E3E5] border border-[#E1E3E5] divide-y">
                         <div className="pt-[15px] px-[25px] pb-[25px]">
                             <div className="flex justify-end">

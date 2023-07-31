@@ -4,12 +4,9 @@ import { usePathname, useRouter } from "next/navigation";
 import FixedRight from "./FixRight";
 import NoAuthTabPage from "../(no-auth-main)/tab/page";
 
-export default function TabbarPage({ bAuth }: { bAuth: boolean }) {
+export default function TabbarPage() {
     const path = usePathname();
-    if (!bAuth) {
-        return <NoAuthTabPage />
-    }
-    else return (
+     return (
         <div className="pt-2 flex justify-between items-center bg-secondary-content gap-x-2 dark:bg-slate-900 relative">
             <div className="tabs flex ">
                 <Link href={`/`} className={`  hover:dark:bg-gray-700 tab-lifted ml-5 tab tab-md sm:tab-lg
