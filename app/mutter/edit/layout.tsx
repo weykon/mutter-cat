@@ -1,7 +1,7 @@
 
 export const metadata = {
- title: 'SEO Title',
- description: 'SEO Title',
+ title: 'Mutter Edit',
+ description: 'Mutter',
 };
 export default function MutterEditLayout({
  children

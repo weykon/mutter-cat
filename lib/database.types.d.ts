@@ -82,6 +82,46 @@ export interface Database {
         }
         Relationships: []
       }
+      mutters: {
+        Row: {
+          author_id: string | null
+          content: string | null
+          created_at: string | null
+          id: string
+          is_private: boolean
+          summary: string | null
+          title: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          author_id?: string | null
+          content?: string | null
+          created_at?: string | null
+          id?: string
+          is_private?: boolean
+          summary?: string | null
+          title?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          author_id?: string | null
+          content?: string | null
+          created_at?: string | null
+          id?: string
+          is_private?: boolean
+          summary?: string | null
+          title?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "mutters_author_id_fkey"
+            columns: ["author_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       nods_page: {
         Row: {
           checksum: string | null
@@ -152,28 +192,6 @@ export interface Database {
             foreignKeyName: "nods_page_section_page_id_fkey"
             columns: ["page_id"]
             referencedRelation: "nods_page"
-            referencedColumns: ["id"]
-          }
-        ]
-      }
-      users: {
-        Row: {
-          id: string
-          user_name: string
-        }
-        Insert: {
-          id: string
-          user_name: string
-        }
-        Update: {
-          id?: string
-          user_name?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "users_id_fkey"
-            columns: ["id"]
-            referencedRelation: "users"
             referencedColumns: ["id"]
           }
         ]

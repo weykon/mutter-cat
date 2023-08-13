@@ -3,8 +3,7 @@ import tailwind from "@/tailwind.config.js"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
-
-
+import { useAuthMetaData } from "../(auth_meta_data)/saver"
 
 enum DetailIndex {
     None = 0,
@@ -14,13 +13,12 @@ enum DetailIndex {
 export default function FixedRight() {
     const router = useRouter();
     const supabase = createClientComponentClient();
+    const usermeta_data = useAuthMetaData();
 
     const avatarDropdown = [
         { name: 'payment', route: '/payment' },
         { name: 'settings', route: '/settings/profile' },
-        {
-            name: 'Sign Out', function: true,
-        }
+        { name: 'Sign Out', function: true }
     ]
     const onClick = (name: string) => {
         document.querySelector('html')?.setAttribute('data-theme', name)
@@ -36,7 +34,7 @@ export default function FixedRight() {
     const theme_details_css = 'dropdown dropdown-end dropdown-bottom relative';
     const theme_summary_css = 'list-none btn-circle btn btn-sm sm:btn-md  items-center justify-center btn-base-400 flex';
     const theme_content_css = 'bg-opacity-50 backdrop-blur-md mt-2 h-[350px] overflow-scroll p-4 shadow w-[350px] sm:w-[450px] menu dropdown-content z-10 bg-stone-300 rounded-box grid grid-cols-2 sm:grid-cols-3 gap-3 backdrop-blur-md'
-    const avatar_summary_css = 'list-none btn btn-circle btn-sm sm:btn-md items-center btn-base-400';
+    const avatar_summary_css = 'list-none btn btn-circle btn-sm sm:btn-md items-center btn-base-400  overflow-hidden';
     const avatar_content_css = 'mt-2 bg-opacity-50 backdrop-blur-md h-[200px] shadow menu-md menu-vertical dropdown-content z-10 bg-stone-300 rounded-box pl-2'
     return (
         <div className="flex justify-end absolute right-0 h-14 items-center gap-x-3">
@@ -75,7 +73,7 @@ export default function FixedRight() {
                     setOpenDetail(true);
                     setOpenDetailIndex(DetailIndex.AvatarDetail);
                 }} className={`${avatar_summary_css} `}>
-                    <img width={40} height={40} src="/avatar.png" alt="" />
+                    <img width={40} height={40} src={`${usermeta_data?.avatar_url ?? "/avatar.png"}`} alt="" />
                 </summary>
                 {/* avatar content */}
                 {

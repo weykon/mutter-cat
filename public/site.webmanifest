@@ -1,0 +1,15 @@
+{
+    "name": "Mutter Cat",
+    "short_name": "meow",
+    "icons": [
+      {
+        "src": "/compose.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "start_url": "/",
+    "theme_color": "#888899",
+    "background_color": "#888899",
+    "display": "standalone"
+}
