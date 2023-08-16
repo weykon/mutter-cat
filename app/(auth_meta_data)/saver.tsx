@@ -4,18 +4,20 @@ import { AuthChangeEvent, Session, UserMetadata } from '@supabase/supabase-js';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 interface AuthMetaDataContextValue {
+    session: Session | undefined;
     authMetaData: UserMetadata | undefined;
 }
 
-export const AuthMetaDataContext = createContext<AuthMetaDataContextValue>({
+export const AuthSessionContext = createContext<AuthMetaDataContextValue>({
     authMetaData: undefined,
+    session: undefined,
 });
 
-export const AuthMetaDataProvider = ({ children, authMetaData }: {
+export const AuthSessionProvider = ({ children, authMetaData, session }: {
     children: React.ReactNode;
     authMetaData: UserMetadata | undefined;
+    session: Session | undefined;
 }) => {
-
     // listen for auth changes
     useEffect(() => {
         const supabase = createClientComponentClient();
@@ -31,14 +33,12 @@ export const AuthMetaDataProvider = ({ children, authMetaData }: {
 
 
     return (
-        <AuthMetaDataContext.Provider value={{ authMetaData }}>
+        <AuthSessionContext.Provider value={{ authMetaData, session }}>
             {children}
-        </AuthMetaDataContext.Provider>
+        </AuthSessionContext.Provider>
     );
 };
 
-export const useAuthMetaData = () => {
-    const { authMetaData } = useContext(AuthMetaDataContext);
-    return authMetaData;
+export const useAuthSession = () => {
+    return useContext(AuthSessionContext);
 };
-

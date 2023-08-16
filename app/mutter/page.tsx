@@ -48,8 +48,6 @@ export default async function MutterPage(props: Props) {
     .order('created_at', { ascending: false })
     .range(from, to);
 
-
-
   if (error) {
     console.log('error', error);
   } else {
@@ -59,7 +57,7 @@ export default async function MutterPage(props: Props) {
   return (
     <div className=" transition-all flex flex-col items-center">
       <MutterEditor/>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-10 lg:max-w-6xl w-xl sm:w-2xl ">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-10 lg:max-w-6xl w-xl sm:w-2xl transition-all">
         {
           data?.map(e => (
             <div className=" card w-auto lg:max-w-[400px] bg-neutral dark:bg-neutral-400 shadow-xl image-full">

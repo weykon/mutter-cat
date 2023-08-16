@@ -5,7 +5,7 @@ import { Inter } from 'next/font/google'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import NoAuthTabPage from './(no-auth-main)/tab/page'
 import Unauthenticated from './(no-auth-main)/_page'
-import { AuthMetaDataProvider } from './(auth_meta_data)/saver'
+import { AuthSessionProvider } from './(auth_meta_data)/saver'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -42,7 +42,7 @@ export default async function RootLayout({
                 />
             </head>
             <body className={inter.className}>
-                <AuthMetaDataProvider authMetaData={session?.user.user_metadata}>
+                <AuthSessionProvider authMetaData={session?.user.user_metadata} session={session ?? undefined}>
                     {
                         session ?
                             <div className='w-full h-full flex-col flex'>
@@ -55,7 +55,7 @@ export default async function RootLayout({
                                 <Unauthenticated />
                             </div>
                     }
-                </AuthMetaDataProvider>
+                </AuthSessionProvider>
             </body>
         </html>
     )

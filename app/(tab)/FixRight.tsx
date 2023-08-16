@@ -3,7 +3,7 @@ import tailwind from "@/tailwind.config.js"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
-import { useAuthMetaData } from "../(auth_meta_data)/saver"
+import { useAuthSession } from "../(auth_meta_data)/saver"
 
 enum DetailIndex {
     None = 0,
@@ -13,7 +13,7 @@ enum DetailIndex {
 export default function FixedRight() {
     const router = useRouter();
     const supabase = createClientComponentClient();
-    const usermeta_data = useAuthMetaData();
+    const { authMetaData: usermeta_data } = useAuthSession();
 
     const avatarDropdown = [
         { name: 'payment', route: '/payment' },
