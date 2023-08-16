@@ -12,6 +12,20 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      animation: {
+        'openCollape': 'openCollape 1s ease-in forwards',
+        'closeCollape': 'closeCollape 1s ease-out forwards',
+      },
+      keyframes: {
+        'openCollape': {
+          '0%': { height: '0px' },
+          '100%': { height: '400px' },
+        },
+        'closeCollape': {
+          '0%': { height: '400px' },
+          '100%': { height: '0px' },
+        },
+      }
     },
   },
   plugins: [

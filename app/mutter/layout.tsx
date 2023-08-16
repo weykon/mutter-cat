@@ -18,10 +18,7 @@ export default async function MutterLayout({
   modal: React.ReactNode;
 }) {
   return (
-    <div className=" flex-col justify-start items-center min-w-full min-h-screen flex z-[1] bg-base-200">
-      <Link href={'/mutter/edit'} className="btn btn-lg btn-primary mt-8">
-        Mutter one second
-      </Link>
+    <div className=" flex-col justify-start items-center min-w-full min-h-screen flex z-[1] bg-base-200 dark:bg-neutral-600">
       {children}
       {modal}
     </div>

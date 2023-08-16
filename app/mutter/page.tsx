@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import { Database } from "@/lib/database.types";
 import Pagination from "./pagination";
 import Link from "next/link";
+import MutterEditor from "./(component)/MutterEditor";
 const width = 600;
 const height = 400;
 const imgs = [
@@ -56,7 +57,8 @@ export default async function MutterPage(props: Props) {
   }
 
   return (
-    <div className="flex flex-col items-center">
+    <div className=" transition-all flex flex-col items-center">
+      <MutterEditor/>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-10 lg:max-w-6xl w-xl sm:w-2xl ">
         {
           data?.map(e => (
