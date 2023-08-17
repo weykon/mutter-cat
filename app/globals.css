@@ -33,9 +33,9 @@ body {
 p { 
   color: rgb(var(--foregroud-rgb));
 }
-
+/* 
 .w-md-editor-text-pre > code,
 .w-md-editor-text-input {
   font-size: 21px !important;
-  line-height: 10px !important;
-}
+  line-height: 21px !important;
+} */

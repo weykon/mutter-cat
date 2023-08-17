@@ -21,9 +21,11 @@ export const metadata = {
 
 export default async function RootLayout({
     children,
+
 }: {
     children: React.ReactNode,
-    tab: React.ReactNode
+    tab: React.ReactNode,
+    
 }) {
     const supabase = createServerComponentClient({ cookies })
     const { data: { session } } = (await supabase.auth.getSession());
@@ -48,6 +50,7 @@ export default async function RootLayout({
                             <div className='w-full h-full flex-col flex'>
                                 <TabbarPage />
                                 {children}
+
                             </div>
                             :
                             <div className='w-full h-full flex-col flex'>

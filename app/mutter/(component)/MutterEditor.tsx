@@ -36,7 +36,7 @@ function AnimaAndDelayRenderCollapes() {
                 <button className="btn btn-primary"> Mutter one second </button>
             </div>
             <div className="collapse-content">
-                <div className="max-w-[600px] p-8 rounded-lg bg-accent-content">
+                <div className="max-w-[600px] p-8 rounded-lg bg-accent-content shadow-lg">
                     <div className="flex justify-between p-2 items-center">
                         <div className="flex items-center justify-center">
                             <p>{'Title ->'}</p>
