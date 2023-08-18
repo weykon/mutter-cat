@@ -26,7 +26,7 @@ function Left() {
       </div>
       <div className="flex-col flex text-base-content">
         <p>weykon</p>
-        <p>I'm learning...</p>
+        <p>I&apos;m learning...</p>
       </div>
     </div>
   )
@@ -44,7 +44,7 @@ function Right() {
       />
       <div className="pt-10 text-lg text-center text-base-content">
         <p className="text-2xl pb-5">Meow!</p>
-        <p>I'm Weykon's Mutter Cat</p>
+        <p>I&apos;m Weykon&apos;s Mutter Cat</p>
         <p>I know all about weykon</p>
       </div>
     </div>

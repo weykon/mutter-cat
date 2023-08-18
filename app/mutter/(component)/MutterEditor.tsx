@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from "react"
-import MDEditor from '@uiw/react-md-editor';
 import '@/app/globals.css'
 import { createClientComponentClient, createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Database } from "@/lib/database.types";
@@ -66,14 +65,7 @@ function AnimaAndDelayRenderCollapes() {
                             >miter</button>
                         </div>
                     </div>
-                    <MDEditor
-                        value={value}
-                        onChange={setValue}
-                        hideToolbar={true}
-                        preview="edit"
-                        style={{ borderRadius: '0.9rem' }}
-                    />
-                    {/* <MDEditor.Markdown source={value} style={{ whiteSpace: 'pre-wrap' }} /> */}
+                    <textarea className="textarea textarea-secondary bg-neutral text-2xl min-h-[300px] min-w-[300px]" placeholder="Bio" onChange={(e) => void setValue(e.target.value)} value={value}></textarea>
                 </div>
             </div>
         </div>

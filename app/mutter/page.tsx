@@ -60,7 +60,7 @@ export default async function MutterPage(props: Props) {
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-10 lg:max-w-6xl w-xl sm:w-2xl transition-all">
         {
           data?.map(e => (
-            <div className=" card w-auto lg:max-w-[400px] bg-neutral dark:bg-neutral-400 shadow-xl image-full">
+            <div key={e.id} className=" card w-auto lg:max-w-[400px] bg-neutral dark:bg-neutral-400 shadow-xl image-full">
               <div className="card-body">
                 <h2 className="card-title">{e.title}</h2>
                 <p>{e.summary}</p>

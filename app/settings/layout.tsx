@@ -10,7 +10,7 @@ export default function SettingsLayout({
             <div className="flex flex-col w-32 md:w-56 lg:w-64 mr-5 mt-4">
                 {
                     settings.map(e => (
-                        <NavItem route={e.route} name={e.name} />
+                        <NavItem key={e.name} route={e.route} name={e.name} />
                     ))
                 }
             </div>
