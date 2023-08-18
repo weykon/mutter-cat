@@ -31,7 +31,8 @@ type Props = {
 const perPage = 9;
 export default async function MutterPage(props: Props) {
   let current = isNaN(Number(props.searchParams.p)) ? 1 : Number(props.searchParams.p);
-  const supabase = createServerComponentClient<Database>({ cookies });
+  const cookieStore = cookies();
+  const supabase = createServerComponentClient({ cookies: () => cookieStore })
 
   const getPagination = (page: number, size: number) => {
     const limit = size ? +size : 3
@@ -56,7 +57,7 @@ export default async function MutterPage(props: Props) {
 
   return (
     <div className=" transition-all flex flex-col items-center">
-      <MutterEditor/>
+      <MutterEditor />
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-10 lg:max-w-6xl w-xl sm:w-2xl transition-all">
         {
           data?.map(e => (

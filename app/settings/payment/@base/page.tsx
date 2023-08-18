@@ -3,7 +3,8 @@ import { cookies } from "next/headers";
 
 export default function ProfileBasePage() {
 
-  const supabase = createServerComponentClient({cookies})
+  const cookieStore = cookies();
+    const supabase = createServerComponentClient({ cookies: ()=>cookieStore })
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     'use server'
     // use Object.entries to get the form data

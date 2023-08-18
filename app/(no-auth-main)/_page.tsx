@@ -5,7 +5,8 @@ import MeowInUpPage from "../auth/MeowInUp";
 
 export default async function Unauthenticated() {
 
-  const supabase = createServerComponentClient({ cookies });
+  const cookieStore = cookies();
+  const supabase = createServerComponentClient({ cookies: () => cookieStore })
 
   const { data: { session } } = await supabase.auth.getSession();
 

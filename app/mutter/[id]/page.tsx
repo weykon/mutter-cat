@@ -6,7 +6,8 @@ import MD from "./mdPreview";
 type Props = { params: { id: string } };
 
 export default async function MutterOnePage(props: Props) {
-  const supabase = createServerComponentClient<Database>({ cookies });
+  const cookieStore = cookies();
+    const supabase = createServerComponentClient({ cookies: ()=>cookieStore })
   const { data } = await supabase.from('mutters').select('*').eq('id', props.params.id).single();
 
   return (
