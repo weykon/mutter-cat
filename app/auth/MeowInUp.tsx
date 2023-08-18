@@ -4,10 +4,21 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import {
   ThemeSupa,
 } from '@supabase/auth-ui-shared'
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { useEffect, useRef } from 'react';
+
+export const dynamic = 'force-dynamic'
+
 export default function MeowInUpPage() {
-  const router = useRouter();
-  const supabase = createClientComponentClient()
+  const supabase = createClientComponentClient();
+
+  const location = useRef<any>(null);
+
+  useEffect(() => {
+    location.current = window.location;
+    console.log(location.current);
+  }, [])
+
   return (
     <div className='w-auto h-auto rounded-lg relative bg-white flex p-5 shadow-lg '>
       <Auth
@@ -15,7 +26,7 @@ export default function MeowInUpPage() {
         providers={['google', 'github']}
         appearance={{ theme: ThemeSupa }}
         onlyThirdPartyProviders={true}
-        redirectTo={`${'http://localhost:3000'}/auth/callback`}
+        redirectTo={`${location.current?.origin ?? ''}/auth/callback`}
       />
     </div>
   );

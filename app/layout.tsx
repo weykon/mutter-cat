@@ -54,7 +54,7 @@ export default async function RootLayout({
 
                             </div>
                             :
-                            <div className='w-full h-full flex-col flex'>
+                            <div className='w-full min-h-screen flex-col flex'>
                                 <NoAuthTabPage />
                                 <Unauthenticated />
                             </div>

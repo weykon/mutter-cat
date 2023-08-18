@@ -11,7 +11,7 @@ export default async function MutterOnePage(props: Props) {
   const { data } = await supabase.from('mutters').select('*').eq('id', props.params.id).single();
 
   return (
-    <div className="relative w-1/2 mx-auto p-10">
+    <div className="min-w-full p-10">
       <MD data={data} />
     </div>
   );

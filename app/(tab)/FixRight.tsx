@@ -88,7 +88,7 @@ export default function FixedRight() {
                                                 e.route && router.push(e.route)
                                                 if (e.function) {
                                                     await supabase.auth.signOut();
-                                                    router.replace('/')
+                                                    router.refresh()
                                                 }
                                             }}>
                                             <p>{e.name}</p>
