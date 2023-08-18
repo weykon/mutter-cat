@@ -12,15 +12,13 @@ import { redirect } from "next/navigation";
 // };
 
 export default async function MutterLayout({
-  children,modal
+  children
 }: {
-  children: React.ReactNode;
-  modal: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <div className=" flex-col justify-start items-center min-w-full min-h-screen flex z-[1] bg-base-200 dark:bg-neutral-600">
       {children}
-      {modal}
     </div>
   )
 }
