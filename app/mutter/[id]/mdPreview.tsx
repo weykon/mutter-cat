@@ -8,6 +8,7 @@ import { useState } from "react";
 export default function MD({ data }: { data: any }) {
     const [editing, setEditing] = useState(false);
     const [editingContent, setEditingContent] = useState(data?.content ?? 'sorry, no content');
+    const [editingTitle, setEditingTitle] = useState(data?.title ?? 'sorry, no title');
     return (
         <div className="flex min-w-full justify-center bg-base">
             {
@@ -21,11 +22,19 @@ export default function MD({ data }: { data: any }) {
             {
                 editing
                 &&
-                <textarea className="min-h-[300px] p-4 textarea textarea-secondary outline-4 bg-neutral dark:bg-neutral dark:text-neutral-content text-neutral-content text-2xl"
-                    placeholder="Bio"
-                    onChange={(e) => void setEditingContent(e.target.value)}
-                    value={editingContent}
-                />
+                <div className="flex flex-col  gap-y-5">
+
+                    <textarea className="min-h-[20px] p-4 textarea textarea-secondary outline-4 bg-neutral dark:bg-neutral dark:text-neutral-content text-neutral-content text-2xl"
+                        placeholder="Title"
+                        onChange={(e) => void setEditingTitle(e.target.value)}
+                        value={editingTitle}
+                    />
+                    <textarea className="min-h-[300px] p-4 textarea textarea-secondary outline-4 bg-neutral dark:bg-neutral dark:text-neutral-content text-neutral-content text-2xl"
+                        placeholder="Mutter Content"
+                        onChange={(e) => void setEditingContent(e.target.value)}
+                        value={editingContent}
+                    />
+                </div>
             }
             <div className="flex flex-col bg-base ml-2 rounded-md">
                 <button onClick={() => void setEditing(!editing)}>
@@ -33,11 +42,13 @@ export default function MD({ data }: { data: any }) {
                         <path stroke="#c2a2a2" d="m31 9 8 8M8 32 36 4l8 8-28 28-10 2 2-10ZM31 9l8 8M9 32l7 7m-3-4 22-22" /></svg>
                 </button>
                 {
-                    editing && <button onClick={async () => {
+                    editing
+                    &&
+                    <button onClick={async () => {
                         const supabase = createClientComponentClient<Database>();
                         const { data: backData, error } = await supabase
                             .from('mutters')
-                            .update({ content: editingContent })
+                            .update({ content: editingContent, title: editingTitle })
                             .eq('id', data?.id)
                             .select().single();
                         if (error) {

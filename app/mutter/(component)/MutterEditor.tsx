@@ -8,15 +8,12 @@ import { useRouter } from "next/navigation";
 import { useAuthSession } from "@/app/(auth_meta_data)/saver";
 
 export default function MutterEditor() {
-    const [isEditing, setIsEditing] = useState(false)
+
     const [value, setValue] = useState<string | undefined>("**Hello world!!!**");
 
     return (
         <div className="relative flex flex-col justify-start items-center mt-10">
             <AnimaAndDelayRenderCollapes />
-            {
-
-            }
         </div>
     )
 }
@@ -28,14 +25,15 @@ function AnimaAndDelayRenderCollapes() {
     const { session } = useAuthSession()!;
     // const [fontSize, setFontSize] = useState(16);
     const router = useRouter();
+    const [isEditing, setIsEditing] = useState(false)
     return (
         <div className="collapse rounded-md">
-            <input type="checkbox" className=""/>
+            <input type="checkbox" className="" defaultChecked={isEditing} checked={isEditing}  onClick={() => void setIsEditing(!isEditing)}/>
             <div className="collapse-title text-xl font-medium w-full pl-0 pr-0 flex justify-center">
                 <button className="btn btn-primary"> Mutter one second </button>
             </div>
-            <div className="collapse-content">
-                <div className="max-w-[600px] p-8 rounded-lg bg-accent-content shadow-lg">
+            <div className={`collapse-content`}>
+                <div className="max-w-[600px] p-8 rounded-lg bg-base shadow-lg">
                     <div className="flex justify-between p-2 items-center">
                         <div className="flex items-center justify-center">
                             <p>{'Title ->'}</p>
@@ -59,13 +57,17 @@ function AnimaAndDelayRenderCollapes() {
                                         console.log(error)
                                     } else {
                                         console.log(data);
+                                        setIsEditing(false);
                                         router.refresh();
                                     }
                                 }}
-                            >miter</button>
+                            >mitar</button>
                         </div>
                     </div>
-                    <textarea className="textarea textarea-secondary bg-neutral text-2xl min-h-[300px] min-w-[300px]" placeholder="Bio" onChange={(e) => void setValue(e.target.value)} value={value}></textarea>
+                    <textarea className="min-h-[300px] p-4 textarea textarea-secondary outline-4 bg-neutral dark:bg-neutral dark:text-neutral-content text-neutral-content text-2xl"
+                        placeholder="Bio"
+                        onChange={(e) => void setValue(e.target.value)}
+                        value={value} />
                 </div>
             </div>
         </div>
