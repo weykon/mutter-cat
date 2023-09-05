@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react"
+import { useLayoutEffect, useState } from "react"
 import '@/app/globals.css'
 import { createClientComponentClient, createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Database } from "@/lib/database.types";
@@ -8,9 +8,7 @@ import { useRouter } from "next/navigation";
 import { useAuthSession } from "@/app/(auth_meta_data)/saver";
 
 export default function MutterEditor() {
-
     const [value, setValue] = useState<string | undefined>("**Hello world!!!**");
-
     return (
         <div className="relative flex flex-col justify-start items-center mt-10">
             <AnimaAndDelayRenderCollapes />
@@ -22,13 +20,14 @@ export default function MutterEditor() {
 function AnimaAndDelayRenderCollapes() {
     const [value, setValue] = useState<string | undefined>("**Hello world!!!**");
     const [title, setTitle] = useState<string | undefined>("no name");
+    const [fontSize, setFontSize] = useState(16);
     const { session } = useAuthSession()!;
     // const [fontSize, setFontSize] = useState(16);
     const router = useRouter();
     const [isEditing, setIsEditing] = useState(false)
     return (
         <div className="collapse rounded-md">
-            <input type="checkbox" className="" defaultChecked={isEditing} checked={isEditing}  onClick={() => void setIsEditing(!isEditing)}/>
+            <input type="checkbox" className="" defaultChecked={isEditing} checked={isEditing} onClick={() => void setIsEditing(!isEditing)} />
             <div className="collapse-title text-xl font-medium w-full pl-0 pr-0 flex justify-center">
                 <button className="btn btn-primary"> Mutter one second </button>
             </div>
@@ -37,8 +36,9 @@ function AnimaAndDelayRenderCollapes() {
                     <div className="flex justify-between p-2 items-center">
                         <div className="flex items-center justify-center">
                             <p>{'Title ->'}</p>
-                            <input type="text" className=" input-sm dark:text-neutral rounded-md w-24 " value={title} onChange={(e) => void setTitle(e.target.value)} />
+                            <input type="text" className=" input-md dark:text-neutral rounded-md w-24 " value={title} onChange={(e) => void setTitle(e.target.value)} />
                         </div>
+
                         <div className="flex items-center justify-center">
                             <button onClick={() => {
                                 // go full screen
@@ -64,10 +64,18 @@ function AnimaAndDelayRenderCollapes() {
                             >mitar</button>
                         </div>
                     </div>
-                    <textarea className="min-h-[300px] p-4 textarea textarea-secondary outline-4 bg-neutral dark:bg-neutral dark:text-neutral-content text-neutral-content text-2xl"
+                    <textarea
+                        className="min-h-[300px] p-4 textarea textarea-secondary outline-4 bg-neutral dark:bg-neutral dark:text-neutral-content text-neutral-content text-2xl"
                         placeholder="Bio"
                         onChange={(e) => void setValue(e.target.value)}
-                        value={value} />
+                        value={value}
+                        style={{ fontSize: `${fontSize}px` }}
+                    />
+
+                    <div>
+                        <input type="range" id="font-size" name="volume" min="1" max="22" onChange={(e) => { setFontSize(Number(e.target.value) * 2) }} />
+                        <label htmlFor="font-size">Font Size</label>
+                    </div>
                 </div>
             </div>
         </div>
