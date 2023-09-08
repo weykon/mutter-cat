@@ -19,8 +19,8 @@ export default function MutterEditor() {
 
 function AnimaAndDelayRenderCollapes() {
     const [value, setValue] = useState<string | undefined>("**Hello world!!!**");
-    const [title, setTitle] = useState<string | undefined>("no name");
-    const [fontSize, setFontSize] = useState(16);
+    const [title, setTitle] = useState<string | undefined>("");
+    const [fontSize, setFontSize] = useState(0.5);
     const { session } = useAuthSession()!;
     // const [fontSize, setFontSize] = useState(16);
     const router = useRouter();
@@ -34,9 +34,8 @@ function AnimaAndDelayRenderCollapes() {
             <div className={`collapse-content`}>
                 <div className="max-w-[600px] p-8 rounded-lg bg-base shadow-lg">
                     <div className="flex justify-between p-2 items-center">
-                        <div className="flex items-center justify-center">
-                            <p>{'Title ->'}</p>
-                            <input type="text" className=" input-md dark:text-neutral rounded-md w-24 " value={title} onChange={(e) => void setTitle(e.target.value)} />
+                        <div className="flex items-center justify-center bg">
+                            <input style={{ fontSize: `${fontSize * 0.75}rem` }} placeholder="标题" type="text" className=" input-md text-md dark:text-neutral rounded-md w-24 textarea-secondary outline-2 bg-neutral dark:bg-neutral text-neutral-content" value={title} onChange={(e) => void setTitle(e.target.value)} />
                         </div>
 
                         <div className="flex items-center justify-center">
@@ -65,15 +64,14 @@ function AnimaAndDelayRenderCollapes() {
                         </div>
                     </div>
                     <textarea
-                        className="min-h-[300px] p-4 textarea textarea-secondary outline-4 bg-neutral dark:bg-neutral dark:text-neutral-content text-neutral-content text-2xl"
+                        className="min-h-[300px] min-w-[400px] p-4 textarea textarea-secondary outline-4 bg-neutral dark:bg-neutral dark:text-neutral-content text-neutral-content"
                         placeholder="Bio"
                         onChange={(e) => void setValue(e.target.value)}
                         value={value}
-                        style={{ fontSize: `${fontSize}px` }}
+                        style={{ fontSize: `${fontSize * 0.7}rem`, lineHeight: `${fontSize * 0.7 * 1.428}rem` }}
                     />
-
-                    <div>
-                        <input type="range" id="font-size" name="volume" min="1" max="22" onChange={(e) => { setFontSize(Number(e.target.value) * 2) }} />
+                    <div className=" self-center justify-center flex ">
+                        <input type="range" id="font-size" name="volume" min="5" max="25" onChange={(e) => { setFontSize(Number(e.target.value) / 5) }} />
                         <label htmlFor="font-size">Font Size</label>
                     </div>
                 </div>
