@@ -72,7 +72,6 @@ function AnimaAndDelayRenderCollapes() {
                     />
                     <div className=" self-center justify-center flex ">
                         <input type="range" id="font-size" name="volume" min="5" max="25" onChange={(e) => { setFontSize(Number(e.target.value) / 5) }} />
-                        <label htmlFor="font-size">Font Size</label>
                     </div>
                 </div>
             </div>

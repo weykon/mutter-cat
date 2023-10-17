@@ -52,7 +52,7 @@ export default async function MutterPage(props: Props) {
   if (error) {
     console.log('error', error);
   } else {
-    console.log('data', data);
+    // console.log('data', data);
   }
 
   return (
